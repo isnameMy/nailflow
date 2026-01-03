@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NailFlow</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <style>
+    body { font-family: -apple-system, sans-serif; padding: 20px; background: #fff9fc; }
+    .header { text-align: center; margin-bottom: 20px; }
+    .avatar { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin: 0 auto; }
+    .btn { 
+      display: block; width: 100%; padding: 14px; margin: 12px 0; 
+      background: #ff4d94; color: white; border: none; border-radius: 12px; 
+      font-size: 16px; cursor: pointer; 
+    }
+    .btn-outline { background: transparent; border: 2px solid #ff4d94; color: #ff4d94; }
+    .reviews { background: #fff; padding: 16px; border-radius: 12px; margin: 16px 0; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <img src="https://placehold.co/100x100/ff4d94/white?text=💅" class="avatar" alt="Мастер">
+    <h1>Анна</h1>
+    <p>мастер маникюра • 5 лет</p>
+    <p>📍 Москва, м. Сокольники</p>
+    <p>⭐️ 4.9 (27 отзывов)</p>
+  </div>
+
+  <button class="btn" id="bookBtn">✨ Записаться в Telegram</button>
+  <button class="btn btn-outline" id="reviewsBtn">💬 Отзывы</button>
+  <button class="btn btn-outline" id="priceBtn">💰 Прайс</button>
+
+  <div class="reviews" id="reviews" style="display:none;">
+    <h3>Отзывы</h3>
+    <p>«Супер! Делала 3 раза — всегда идеально» — Мария, 5⭐️</p>
+    <p>«Аня — волшебница! Спасибо за дизайн 💖» — Оля, 5⭐️</p>
+  </div>
+
+  <script>
+    // Инициализация Telegram WebApp
+    const tg = window.Telegram.WebApp;
+    tg.expand(); // разворачиваем на весь экран
+
+    // Кнопка "Записаться" → открывает бота
+    document.getElementById('bookBtn').onclick = () => {
+      tg.openTelegramLink('https://t.me/nailflow_test_bot?start=from_miniapp');
+    };
+
+    // Показ отзывов
+    document.getElementById('reviewsBtn').onclick = () => {
+      document.getElementById('reviews').style.display = 'block';
+    };
+
+    // Прайс (можно сделать popup или отдельную страницу)
+    document.getElementById('priceBtn').onclick = () => {
+      alert('💅 Классический — 1500₽\n💅+покрытие — 2000₽\n💅 Дизайн — от 500₽');
+    };
+  </script>
+</body>
+</html>
